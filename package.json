@@ -1,0 +1,19 @@
+{
+  "name": "website_screenshot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "playwright": "^1.55.0",
+    "pptxgenjs": "^4.0.1",
+    "puppeteer": "^24.17.1",
+    "puppeteer-core": "^24.17.1"
+  }
+}
