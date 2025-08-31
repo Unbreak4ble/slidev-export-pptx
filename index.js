@@ -1,8 +1,12 @@
+'use strict';
+
 const { chromium } = require('playwright');
 const PptxGenJS = require('pptxgenjs');
 
 const slidev_url = "http://localhost:3030/2";
 const output_filename = "output.pptx";
+const colorScheme = "dark";
+const viewport = { width: 1280, height: 720 };
 
 (async () => {
     const pptx = new PptxGenJS();
@@ -10,10 +14,10 @@ const output_filename = "output.pptx";
     const page = await browser.newPage();
 
     await page.emulateMedia({
-        colorScheme: "dark"
+        colorScheme: colorScheme
     });
 
-    await page.setViewportSize({ width: 1280, height: 720, deviceScaleFactor: 5 });
+    await page.setViewportSize(viewport);
 
     await page.goto(slidev_url, { waitUntil: 'load' });
 
@@ -45,10 +49,6 @@ const output_filename = "output.pptx";
         await page.keyboard.press('ArrowRight', { delay: 1 });
 
         await new Promise(resolve => setTimeout(resolve, 500));
-
-        const params = new URL(currentUrl).searchParams;
-
-        clicks = +params.get("clicks") || max_click;
     }
 
     await browser.close();
